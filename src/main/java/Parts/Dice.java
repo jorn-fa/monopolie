@@ -10,7 +10,7 @@ public class Dice {
 	}
 	
 	
-	private int getThrow()
+	public int getThrow()
 	{		
 		//+1 geeft max nummer ook terug als getal anders is het max 0.99 rounded down
 		return (int)(Math.random()*maxNumber+1);

@@ -10,7 +10,8 @@ import Fields.*;
 @SuiteClasses({ 
 	
 	PlayerTest.class,
-	StationFieldTest.class
+	StationFieldTest.class,
+	DiceTest.class
 	
 	
 	
