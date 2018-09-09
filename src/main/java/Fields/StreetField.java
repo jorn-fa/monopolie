@@ -1,18 +1,25 @@
 package Fields;
 
-import javax.naming.InitialContext;
+import java.util.List;
+import java.util.ArrayList;
+
+
+import Parts.Hotel;
+import Parts.House;
 
 public class StreetField extends Field{
 
-	private int price;
-	private int house;
-	private int hotel;	
+	private int price;	
 	
 	private final int maxHouse=4;
-	private final int maxHotel=1;
+	private final int maxHotel=1;	
 	
-	private int housePrice;
-	private int hotelPrice;
+	private List<House> houses;
+	private List<Hotel> hotels;
+	
+	private int houseCost;
+	private int hotelCost;
+	
 	
 	
 	public StreetField(String name, int number, int price) throws IllegalArgumentException {
@@ -21,54 +28,53 @@ public class StreetField extends Field{
 		init();
 	}
 	
-	private void init() {
-		house=0;
-		hotel=0;
+	private void init() {		
+		houseCost=0;
+		hotelCost=0;
+		houses=new ArrayList<House>();
+		hotels=new ArrayList<Hotel>();
+		
 	}
 
 	public int getPrice() {
 		return price;
 	}	
 	
-	public int getHotel() {
-		return hotel;
+	
+	public boolean hasHotel() {
+		if(hotels.size()==1) {return true;}
+		return false;
 	}	
 
+	
 	public int getHouse() {
-		return house;
+		return houses.size();
 	}	
 
-	public int getHousePrice() {
-		return housePrice;
+	public int getHouseCost() {
+		return houseCost;
 	}
 
-	public void setHousePrice(int housePrice) {
-		this.housePrice = housePrice;
-	}
+		public int getHotelPrice() {
+		return hotelCost;
+	}	
 
-	public int getHotelPrice() {
-		return hotelPrice;
-	}
-
-	public void setHotelPrice(int hotelPrice) {
-		this.hotelPrice = hotelPrice;
-	}
-
-	public void addHouse(int amount) {
-		if(house<maxHouse) {house+=amount;}
+	public void addHouse(House house) {
+		if(houses.size()<maxHouse) {houses.add(house);}
+		if(houseCost==0){houseCost = house.getCost();}
 	}
 	
-	public void addHotel() {
-		if (house==maxHouse) 
-		{
-			house=0;
-			hotel+=1;
-		}
-		
+	public void addHotel(Hotel hotel) {
+		if (hotels.size()<maxHotel) {hotels.add(hotel);}
+		if(hotelCost==0) {hotelCost=hotel.getCost();}		
 	}
 	
 	public void resetStreetfield() {
 		init();
 	}
 	
+	public double getMorgage()
+	{
+		return price/2;
+	}
 }
