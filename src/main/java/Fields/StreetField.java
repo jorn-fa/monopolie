@@ -6,7 +6,10 @@ public class StreetField extends Field{
 
 	private int price;
 	private int house;
-	private int hotel;
+	private int hotel;	
+	
+	private final int maxHouse=4;
+	private final int maxHotel=1;
 	
 	
 	public StreetField(String name, int number, int price) throws IllegalArgumentException {
@@ -22,14 +25,27 @@ public class StreetField extends Field{
 
 	public int getPrice() {
 		return price;
-	}
+	}	
 	
+	public int getHotel() {
+		return hotel;
+	}	
+
+	public int getHouse() {
+		return house;
+	}
+
 	public void addHouse(int amount) {
-		house+=amount;
+		if(house<maxHouse) {house+=amount;}
 	}
 	
-	public void addHotel(int amount) {
-		hotel+=amount;
+	public void addHotel() {
+		if (house==maxHouse) 
+		{
+			house=0;
+			hotel+=1;
+		}
+		
 	}
 	
 	public void resetStreetfield() {

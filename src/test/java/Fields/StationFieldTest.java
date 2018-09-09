@@ -10,8 +10,8 @@ import Fields.StationField;
 
 public class StationFieldTest {
 	
-	private Field fieldOne;
-	private Field fieldTwo;
+	private StationField fieldOne;
+	private StationField fieldTwo;
 	
 	
 	@Before
@@ -24,6 +24,7 @@ public class StationFieldTest {
 	public void verifySetup()
 	{
 		assertTrue(fieldOne.getName()=="name");
+		
 		assertTrue(fieldTwo.getNumber()==5);
 		
 	}
@@ -31,8 +32,14 @@ public class StationFieldTest {
 	@Test (expected = IllegalArgumentException.class)
 	public void failedCreate() 
 	{
-		Field test=new StationField(null, 0, 0);
+		StationField test=new StationField(null, 0, 0);	
 		assertTrue(test.getName()==null);
+		
+	}
+	
+	@Test
+	public void priceTest() {
+		assertTrue(fieldOne.getPrice()==15000);
 	}
 
 }
