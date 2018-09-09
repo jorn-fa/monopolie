@@ -11,6 +11,9 @@ public class StreetField extends Field{
 	private final int maxHouse=4;
 	private final int maxHotel=1;
 	
+	private int housePrice;
+	private int hotelPrice;
+	
 	
 	public StreetField(String name, int number, int price) throws IllegalArgumentException {
 		super(name, number);
@@ -33,6 +36,22 @@ public class StreetField extends Field{
 
 	public int getHouse() {
 		return house;
+	}	
+
+	public int getHousePrice() {
+		return housePrice;
+	}
+
+	public void setHousePrice(int housePrice) {
+		this.housePrice = housePrice;
+	}
+
+	public int getHotelPrice() {
+		return hotelPrice;
+	}
+
+	public void setHotelPrice(int hotelPrice) {
+		this.hotelPrice = hotelPrice;
 	}
 
 	public void addHouse(int amount) {
