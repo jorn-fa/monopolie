@@ -1,14 +1,18 @@
 package Fields;
 
 import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 import Parts.Hotel;
 import Parts.House;
 
-public class StreetField extends Field{
+public class StreetField extends Field implements Serializable{
 
+	//default number used
+	private static final long serialVersionUID = 1L;
+	
 	private int price;	
 	
 	private final int maxHouse=4;

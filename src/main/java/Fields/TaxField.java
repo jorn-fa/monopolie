@@ -1,7 +1,12 @@
 package Fields;
 
-public class TaxField extends Field{
+import java.io.Serializable;
 
+public class TaxField extends Field implements Serializable{
+
+	//default number used
+	private static final long serialVersionUID = 1L;
+	
 	private final int amount;
 	
 	public TaxField(String name, int number, int taxAmount) throws IllegalArgumentException {

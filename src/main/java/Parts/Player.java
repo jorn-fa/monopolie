@@ -1,11 +1,14 @@
 package Parts;
+import java.io.Serializable;
 import java.util.Comparator;
 
 
 
-public class Player implements Comparable<Player>{
+public class Player implements Comparable<Player>,Serializable{
 	
 	
+	//default
+	private static final long serialVersionUID = 1L;
 	private final String name,surname;	
 	private Integer bankAmount;
 	

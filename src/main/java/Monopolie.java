@@ -1,6 +1,9 @@
 import Parts.Player;
 
 public class Monopolie {
+
+	
+	
 	
 	public static void main(String[] args) {
 		
