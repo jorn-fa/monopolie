@@ -26,8 +26,8 @@ public class StreetField extends Field implements Serializable{
 	
 	
 	
-	public StreetField(String name, int number, int price) throws IllegalArgumentException {
-		super(name, number);
+	public StreetField(String name, int price) throws IllegalArgumentException {
+		super(name);
 		this.price=price;
 		init();
 	}

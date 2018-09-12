@@ -9,8 +9,8 @@ public class StationField extends Field implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int price;
 	
-	public StationField(String name, int number, int price)  throws IllegalArgumentException {
-		super(name, number);
+	public StationField(String name,  int price)  throws IllegalArgumentException {
+		super(name);
 		this.price=price;
 	}
 	

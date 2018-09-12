@@ -16,8 +16,8 @@ public class StationFieldTest {
 	
 	@Before
 	public void setUp() {
-		fieldOne = new StationField("name", 15, 15000);
-		fieldTwo = new StationField("otherName", 5, 12000);
+		fieldOne = new StationField("name",  15000);
+		fieldTwo = new StationField("otherName", 12000);
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ public class StationFieldTest {
 	@Test (expected = IllegalArgumentException.class)
 	public void failedCreate() 
 	{
-		StationField test=new StationField(null, 0, 0);	
+		StationField test=new StationField(null,  0);	
 		assertTrue(test.getName()==null);
 		
 	}

@@ -14,8 +14,8 @@ public class PlayerTest {
 	
 	@Before
 	public void setUp() {
-		playerOne = new Player("One");
-		playerTwo = new Player("Player","Two");
+		playerOne = new Player("One",1);
+		playerTwo = new Player("Player","Two",2);
 	}
 	
 	@Test
@@ -23,6 +23,8 @@ public class PlayerTest {
 		assertTrue(playerOne.getName().equalsIgnoreCase("one"));
 		assertTrue(playerTwo.getName().equalsIgnoreCase("player"));
 		assertTrue(playerTwo.getSurname().equalsIgnoreCase("two"));
+		assertTrue(playerOne.getNumber()==1);
+		assertTrue(playerTwo.getNumber()==2);
 	}
 	
 	@Test

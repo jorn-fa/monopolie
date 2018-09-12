@@ -11,7 +11,8 @@ import Fields.*;
 	
 	PlayerTest.class,
 	StationFieldTest.class,
-	DiceTest.class
+	DiceTest.class,
+	BoardTest.class,
 	
 	
 	

@@ -9,8 +9,8 @@ public class TaxField extends Field implements Serializable{
 	
 	private final int amount;
 	
-	public TaxField(String name, int number, int taxAmount) throws IllegalArgumentException {
-		super(name, number);
+	public TaxField(String name,  int taxAmount) throws IllegalArgumentException {
+		super(name);
 		this.amount=taxAmount;
 		
 	}

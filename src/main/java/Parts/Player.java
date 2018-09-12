@@ -7,23 +7,26 @@ import java.util.Comparator;
 public class Player implements Comparable<Player>,Serializable{
 	
 	
-	//default
+	//default Uid -> change on class completion
 	private static final long serialVersionUID = 1L;
 	private final String name,surname;	
+	private int playerNumber;
 	private Integer bankAmount;
 	
-	public Player(String name) {
+	public Player(String name, int playerNumber) {
 		super();
 		this.name = name;
 		this.surname="";
+		this.playerNumber=playerNumber;
 		init();
 	}
+		
 	
-	
-	public Player(String name, String surname ) {
+	public Player(String name, String surname, int playerNumber ) {
 		super();
 		this.name = name;
 		this.surname = surname;
+		this.playerNumber=playerNumber;
 		init();		
 	}
 	
@@ -83,6 +86,11 @@ public class Player implements Comparable<Player>,Serializable{
 	@Override
 	public String toString() {
 		return "Player [name=" + name + ", surname=" + surname + ", bankAmount=" + bankAmount + "]";
+	}
+
+
+	public int getNumber() {
+		return playerNumber;
 	}
 
 	

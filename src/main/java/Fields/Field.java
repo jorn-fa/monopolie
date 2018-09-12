@@ -9,15 +9,22 @@ public class Field implements Serializable,Comparable<Field>{
 	//default number used
 	private static final long serialVersionUID = 1L;
 	private String name;
-	private int number;
+	private int playerNumber;
 	
 	private int groupNumber;
 
-	public Field(String name, int number) throws IllegalArgumentException{
+	public Field(String name) throws IllegalArgumentException {
 		super();
-		if (name==null)  throw new IllegalArgumentException("Check Input");
+		if (name==null)  throw new IllegalArgumentException("Check Input");		
 		this.name = name;
-		this.number = number;
+	}
+
+	public void setPlayerNumber(int number) {
+		this.playerNumber=number;	
+	}
+	
+	public int getPlayerNumber() {
+		return playerNumber;
 	}
 
 	public String getName() {
@@ -25,7 +32,7 @@ public class Field implements Serializable,Comparable<Field>{
 	}	
 
 	public int getNumber() {
-		return number;
+		return playerNumber;
 	}
 
 	public int getGroupNumber() {
