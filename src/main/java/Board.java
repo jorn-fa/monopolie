@@ -10,12 +10,13 @@ import Parts.Player;
 public class Board {
 
 	//define Field
-	private TreeMap<Integer, Field> squares;
+	private TreeMap<Integer, Field> squares = new TreeMap<Integer,Field>();
 	
 	
 	
 	public Board() {
 		super();
+	
 		
 	}
 
@@ -24,18 +25,18 @@ public class Board {
 		return squares.size();
 	}
 	
-	public boolean addField(Field field) {		
-		return squares.put(field.getNumber(),field) != null;
+	public boolean addField(Field field) {
+		return squares.put(field.getFieldNumber(),field) != null;
 	}
 	
 	public void addOwnerToField(Player player, int fieldNumber) 
 	{
-		squares.get(fieldNumber).setPlayerNumber(player.getNumber());
+		squares.get(fieldNumber).setPlayer(player);
 				
 	}
 	
-	public int getOwnerNumberFromField(int fieldNumber) {
-		return squares.get(fieldNumber).getNumber();
+	public Player getOwnerNumberFromField(int fieldNumber) {
+		return squares.get(fieldNumber).getPlayer();
 	}
 	
 }

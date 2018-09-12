@@ -21,7 +21,9 @@ public class BoardTest {
 		playerOne = new Player("playerOne",1);
 		playerTwo = new Player("Player","Two",2);
 		fieldOne = new Field("Start");
+		fieldOne.setFieldNumber(1);		
 		fieldTwo = new StreetField("first street", 15000);
+		fieldTwo.setFieldNumber(2);
 		board.addField(fieldOne);
 		board.addField(fieldTwo);
 	}
@@ -32,8 +34,21 @@ public class BoardTest {
 		assertTrue(fieldTwo.getName().equals("first street"));
 		assertTrue(playerOne.getName().equals("playerOne"));
 		assertTrue(playerTwo.getName().equals("Player"));
-		assertTrue(board.getOwnerNumberFromField(1)==0);
-		assertTrue(board.getOwnerNumberFromField(0)==0);
+		assertTrue(board.getOwnerNumberFromField(1)==null);
+		assertTrue(board.getOwnerNumberFromField(2)==null);
+	}
+	
+	@Test
+	public void hasOwner()
+	{
+		fieldOne.setPlayer(playerOne);
+		assertTrue(fieldOne.getPlayer().getName().equals(playerOne.getName()));
+	}
+	
+	@Test
+	public void hasFields() 
+	{
+		assertTrue(board.getFieldamount()==2);
 	}
 
 }

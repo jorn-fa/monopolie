@@ -23,9 +23,8 @@ public class StationFieldTest {
 	@Test
 	public void verifySetup()
 	{
-		assertTrue(fieldOne.getName()=="name");
-		
-		assertTrue(fieldTwo.getNumber()==5);
+		assertTrue(fieldOne.getName()=="name");		
+		assertTrue(fieldTwo.getPrice()==12000);
 		
 	}
 	

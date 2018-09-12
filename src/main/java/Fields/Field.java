@@ -3,13 +3,17 @@ package Fields;
 import java.io.Serializable;
 import java.util.Comparator;
 
+import Parts.Player;
+
 public class Field implements Serializable,Comparable<Field>{
 
 	
 	//default number used
 	private static final long serialVersionUID = 1L;
-	private String name;
-	private int playerNumber;
+	private String name;	
+	private Player player;
+	
+	private int fieldNumber;
 	
 	private int groupNumber;
 
@@ -19,24 +23,29 @@ public class Field implements Serializable,Comparable<Field>{
 		this.name = name;
 	}
 
-	public void setPlayerNumber(int number) {
-		this.playerNumber=number;	
+	public void setPlayer(Player player) {
+		this.player=player;	
 	}
 	
-	public int getPlayerNumber() {
-		return playerNumber;
+	public Player getPlayer() {
+		return player;
 	}
 
 	public String getName() {
 		return name;
-	}	
-
-	public int getNumber() {
-		return playerNumber;
-	}
+	}		
 
 	public int getGroupNumber() {
 		return groupNumber;
+	}
+	
+
+	public int getFieldNumber() {
+		return fieldNumber;
+	}
+
+	public void setFieldNumber(int fieldNumber) {
+		this.fieldNumber = fieldNumber;
 	}
 
 	public void setGroupNumber(int number) throws IllegalArgumentException{
