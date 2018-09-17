@@ -11,7 +11,8 @@ public class Player implements Comparable<Player>,Serializable{
 	private static final long serialVersionUID = 1L;
 	private final String name,surname;	
 	private int playerNumber;
-	private Integer bankAmount;
+	private int bankAmount;
+	private boolean isHuman=true;
 	
 	public Player(String name, int playerNumber) {
 		super();
@@ -32,7 +33,7 @@ public class Player implements Comparable<Player>,Serializable{
 	
 
 	private void init() {
-		bankAmount=0;
+		bankAmount=0;		
 	}	
 
 	
@@ -63,7 +64,18 @@ public class Player implements Comparable<Player>,Serializable{
 	public String getSurname() {
 		return surname;
 	}
-
+	
+	public Boolean isHuman() {
+		return isHuman;
+	}
+	
+	public void setAi() {
+		isHuman = false;
+	}
+	
+	public void setHuman() {
+		isHuman = true;
+	}
 	
 
 	public int compareTo(Player comparePlayer) {

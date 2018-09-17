@@ -16,7 +16,6 @@ public class Board {
 	
 	public Board() {
 		super();
-	
 		
 	}
 
@@ -25,8 +24,13 @@ public class Board {
 		return squares.size();
 	}
 	
-	public boolean addField(Field field) {
+	public boolean addField(Field field)  throws NoSuchFieldException{
+		// is thrown when a class does not contain the field (or variable) specified
+		
+		if(field.getFieldNumber()==0) {throw new NoSuchFieldException ("No number defined on field");}
+		
 		return squares.put(field.getFieldNumber(),field) != null;
+		
 	}
 	
 	public void addOwnerToField(Player player, int fieldNumber) 

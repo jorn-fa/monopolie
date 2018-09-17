@@ -24,8 +24,14 @@ public class BoardTest {
 		fieldOne.setFieldNumber(1);		
 		fieldTwo = new StreetField("first street", 15000);
 		fieldTwo.setFieldNumber(2);
-		board.addField(fieldOne);
-		board.addField(fieldTwo);
+		try {
+			board.addField(fieldOne);
+			board.addField(fieldTwo);
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@Test
