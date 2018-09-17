@@ -43,4 +43,8 @@ public class Board {
 		return squares.get(fieldNumber).getPlayer();
 	}
 	
+	public Field getFieldFromNumber(int fieldNumber) {
+		return squares.get(fieldNumber);
+	}
+	
 }
