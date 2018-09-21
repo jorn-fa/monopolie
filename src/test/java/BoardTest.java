@@ -20,7 +20,7 @@ public class BoardTest {
 		board =new Board();
 		playerOne = new Player("playerOne",1);
 		playerTwo = new Player("Player","Two",2);
-		fieldOne = new Field("Start");
+		fieldOne = new StartField("Start");
 		fieldOne.setFieldNumber(1);		
 		fieldTwo = new StreetField("first street", 15000);
 		fieldTwo.setFieldNumber(2);
