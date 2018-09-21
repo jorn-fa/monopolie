@@ -1,3 +1,6 @@
+import java.rmi.server.RMIFailureHandler;
+import java.util.Optional;
+
 import Fields.*;
 import Parts.*;
 
@@ -20,9 +23,32 @@ public class Monopolie {
 	
 	}
 	
+	private Field getCurrentField() {return board.getFieldFromNumber(fieldPosition); }
+	
+	
+	public void buyField(Player player) {		
+	player.setBankAmount(player.getBankAmount()-getCurrentField().getPrice());
+	getCurrentField().setPlayer(player);		
+	}
+	
+	public void sellField(Player player) {
+		player.setBankAmount(player.getBankAmount()+(getCurrentField().getPrice()/2));
+	}
+	
+	
+	public boolean hasOwner() {
+		if (board.getOwnerNumberFromField(fieldPosition)!=null) { return true;}
+		return false;
+	}	
+	
+	public Player getOwner() {
+		Optional<Player> optional = Optional.of(board.getOwnerNumberFromField(fieldPosition));
+		return optional.orElse(new Player("Not Found",-1));
+		}
+	
 	
 	public void displayFieldName() {
-		System.out.println(board.getFieldFromNumber(fieldPosition).getName());
+		System.out.println(getCurrentField().getName());
 	}
 	
 	
@@ -37,7 +63,7 @@ public class Monopolie {
 		
 		
 		
-		Field f1 = new Field("Start Veld");
+		Field f1 = new StartField("Start Veld");
 		f1.setFieldNumber(1);
 		Field f2 = new StreetField("eerste straat", 15000);
 		f2.setFieldNumber(2);

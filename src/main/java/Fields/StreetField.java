@@ -40,6 +40,7 @@ public class StreetField extends Field implements Serializable{
 		
 	}
 
+	@Override
 	public int getPrice() {
 		return price;
 	}	

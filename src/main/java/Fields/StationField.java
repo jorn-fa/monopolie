@@ -14,6 +14,7 @@ public class StationField extends Field implements Serializable{
 		this.price=price;
 	}
 	
+	@Override
 	public int getPrice() {
 		return price;
 	}

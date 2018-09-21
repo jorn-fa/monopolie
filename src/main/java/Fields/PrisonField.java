@@ -7,6 +7,13 @@ public class PrisonField extends Field implements Serializable{
 	
 		
 	
+	
+	@Override
+	public int getPrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	private static final long serialVersionUID = 1L;
 	private boolean visiting;
 	

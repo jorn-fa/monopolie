@@ -1,4 +1,5 @@
 
+import java.util.Optional;
 import java.util.TreeMap;
 
 
@@ -40,11 +41,22 @@ public class Board {
 	}
 	
 	public Player getOwnerNumberFromField(int fieldNumber) {
+		//if(squares.get(fieldNumber).getPlayer()==null) {return null; }
+		
 		return squares.get(fieldNumber).getPlayer();
 	}
 	
 	public Field getFieldFromNumber(int fieldNumber) {
 		return squares.get(fieldNumber);
 	}
+	
+	public int getFieldPrice(int fieldNumber) {
+		
+		return getFieldFromNumber(fieldNumber).getPrice();
+		
+	}
+		
+
+		
 	
 }

@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 import Parts.Player;
 
-public class Field implements Serializable,Comparable<Field>{
+public abstract class  Field implements Serializable,Comparable<Field>{
 
 	
 	//default number used
@@ -43,6 +43,8 @@ public class Field implements Serializable,Comparable<Field>{
 	public int getFieldNumber() {
 		return fieldNumber;
 	}
+	
+	public abstract int getPrice();
 
 	public void setFieldNumber(int fieldNumber) {
 		this.fieldNumber = fieldNumber;
