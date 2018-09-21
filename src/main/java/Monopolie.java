@@ -1,6 +1,7 @@
 import java.rmi.server.RMIFailureHandler;
 import java.util.Optional;
 
+import Exeptions.NegativeBankAmount;
 import Fields.*;
 import Parts.*;
 
@@ -26,13 +27,27 @@ public class Monopolie {
 	private Field getCurrentField() {return board.getFieldFromNumber(fieldPosition); }
 	
 	
-	public void buyField(Player player) {		
-	player.setBankAmount(player.getBankAmount()-getCurrentField().getPrice());
-	getCurrentField().setPlayer(player);		
+	public boolean buyField(Player player)  {		
+	
+		int playerCash=player.getBankAmount();
+		int fieldPrice=getCurrentField().getPrice();
+		
+		if((playerCash-fieldPrice<0)){return false;}		
+		
+		player.setBankAmount(playerCash-fieldPrice);
+		getCurrentField().setPlayer(player);
+		
+		return true;
 	}
 	
 	public void sellField(Player player) {
-		player.setBankAmount(player.getBankAmount()+(getCurrentField().getPrice()/2));
+		int playerCash=player.getBankAmount();
+		int fieldPrice=getCurrentField().getPrice();
+		
+		player.setBankAmount(playerCash+(fieldPrice/2));
+		getCurrentField().setPlayer(null);	
+		
+		
 	}
 	
 	
@@ -44,7 +59,7 @@ public class Monopolie {
 	public Player getOwner() {
 		Optional<Player> optional = Optional.of(board.getOwnerNumberFromField(fieldPosition));
 		return optional.orElse(new Player("Not Found",-1));
-		}
+	}
 	
 	
 	public void displayFieldName() {
@@ -57,7 +72,7 @@ public class Monopolie {
 		Monopolie monopolie=new Monopolie();
 		
 		Player player = new Player("ikke","niet", 1);
-		player.setBankAmount(5000);
+		player.setBankAmount(50000);
 		System.out.println(player);
 		
 		
@@ -82,7 +97,8 @@ public class Monopolie {
 			monopolie.board.addField(f3);
 			monopolie.board.addField(f4);
 			monopolie.board.addField(f5);
-			monopolie.board.addField(f6);
+			monopolie.board.addField(f6);			
+			
 		} catch (NoSuchFieldException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,8 +108,15 @@ public class Monopolie {
 		monopolie.displayFieldName();
 		monopolie.rollDice();
 		monopolie.displayFieldName();		
-		monopolie.rollDice();		
+		monopolie.rollDice();
+		monopolie.buyField(player);
+		System.out.println(player.getBankAmount());
 		monopolie.displayFieldName();
+		monopolie.sellField(player);
+		System.out.println(player.getBankAmount());
+		
+		
+		
 		
 	}
 
