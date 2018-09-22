@@ -20,7 +20,7 @@ public class Monopolie {
 		if(fieldPosition>board.getFieldamount()) {
 			//correction to reset to start
 			fieldPosition  = Math.abs(board.getFieldamount()-fieldPosition);			
-		}
+		}		
 	
 	}
 	
@@ -50,6 +50,16 @@ public class Monopolie {
 		
 	}
 	
+	public void checkFieldType(Player player) {
+		
+		if(getCurrentField()  instanceof TaxField) {
+			System.out.println("ye");
+			System.out.println(getCurrentField().getPrice());
+			player.changeBalance(-getCurrentField().getPrice());
+			
+		}
+	}
+	
 	
 	public boolean hasOwner() {
 		if (board.getOwnerNumberFromField(fieldPosition)!=null) { return true;}
@@ -57,14 +67,18 @@ public class Monopolie {
 	}	
 	
 	public Player getOwner() {
-		Optional<Player> optional = Optional.of(board.getOwnerNumberFromField(fieldPosition));
-		return optional.orElse(new Player("Not Found",-1));
+
+		Optional<Player> optional = Optional.ofNullable(board.getOwnerNumberFromField(fieldPosition));
+		return optional.orElse(new Player("None",-1));
 	}
 	
 	
 	public void displayFieldName() {
 		System.out.println(getCurrentField().getName());
 	}
+	
+	
+	
 	
 	
 	public static void main(String[] args) {
@@ -90,6 +104,8 @@ public class Monopolie {
 		f5.setFieldNumber(5);
 		Field f6 = new StreetField("vijfde straat", 15000);
 		f6.setFieldNumber(6);
+		Field f7 = new TaxField("Tax een", 1500);
+		f7.setFieldNumber(7);
 				
 		try {
 			monopolie.board.addField(f1);
@@ -97,7 +113,8 @@ public class Monopolie {
 			monopolie.board.addField(f3);
 			monopolie.board.addField(f4);
 			monopolie.board.addField(f5);
-			monopolie.board.addField(f6);			
+			monopolie.board.addField(f6);	
+			monopolie.board.addField(f7);
 			
 		} catch (NoSuchFieldException e) {
 			// TODO Auto-generated catch block
@@ -111,12 +128,19 @@ public class Monopolie {
 		monopolie.rollDice();
 		monopolie.buyField(player);
 		System.out.println(player.getBankAmount());
+		
 		monopolie.displayFieldName();
-		monopolie.sellField(player);
+		//monopolie.sellField(player);
 		System.out.println(player.getBankAmount());
+
+		for(int i = 0; i<10;i++) {
+		monopolie.rollDice();
+		monopolie.checkFieldType(player);
+		System.out.print("veld: + "); 
+		monopolie.displayFieldName();
+		System.out.println(monopolie.getOwner().getName());}	
 		
-		
-		
+		System.out.println(player.getBankAmount());
 		
 	}
 

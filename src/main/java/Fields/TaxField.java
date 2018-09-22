@@ -15,14 +15,12 @@ public class TaxField extends Field implements Serializable{
 		
 	}
 
-	public int getAmount() {
-		return amount;
-	}
+	
 
 	@Override
 	public int getPrice() {
 		// TODO Auto-generated method stub
-		return 0;
+		return amount;
 	}
 	
 	
