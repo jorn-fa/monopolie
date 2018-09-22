@@ -21,8 +21,8 @@ public class StreetField extends Field implements Serializable{
 	private List<House> houses;
 	private List<Hotel> hotels;
 	
-	private int houseCost;
-	private int hotelCost;
+	private int houseCostPrice=0;
+	private int hotelCostPrice=0;
 	
 	
 	
@@ -32,9 +32,16 @@ public class StreetField extends Field implements Serializable{
 		init();
 	}
 	
-	private void init() {		
-		houseCost=0;
-		hotelCost=0;
+	public StreetField(String name, int fieldPrice, int houseCost, int hotelCost ) throws IllegalArgumentException {
+		super(name);
+		this.price=price;
+		init();
+		houseCostPrice=houseCost;
+		hotelCostPrice=hotelCost;
+	}
+	
+	private void init() {
+		
 		houses=new ArrayList<House>();
 		hotels=new ArrayList<Hotel>();
 		
@@ -57,21 +64,21 @@ public class StreetField extends Field implements Serializable{
 	}	
 
 	public int getHouseCost() {
-		return houseCost;
+		return houseCostPrice;
 	}
 
 		public int getHotelPrice() {
-		return hotelCost;
+		return hotelCostPrice;
 	}	
 
-	public void addHouse(House house) {
-		if(houses.size()<maxHouse) {houses.add(house);}
-		if(houseCost==0){houseCost = house.getCost();}
+	public void addHouse() {
+		if(houses.size()<maxHouse) {houses.add(new House(houseCostPrice));}		
 	}
 	
-	public void addHotel(Hotel hotel) {
-		if (hotels.size()<maxHotel) {hotels.add(hotel);}
-		if(hotelCost==0) {hotelCost=hotel.getCost();}		
+	public void addHotel() {
+		if (hotels.size()<maxHotel && houses.size()==maxHouse) {
+			hotels.add(new Hotel(hotelCostPrice));
+			}		
 	}
 	
 	public void resetStreetfield() {
