@@ -76,10 +76,6 @@ public class StreetField extends Field implements Serializable{
 	
 	public void resetStreetfield() {
 		init();
-	}
+	}	
 	
-	public double getMorgage()
-	{
-		return price/2;
-	}
 }
